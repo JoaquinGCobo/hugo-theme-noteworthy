@@ -1,9 +1,27 @@
 <footer class="footer">
-	{{ partial "social.html" . }}
 
-    <p><a href="https://github.com/kimcc/hugo-theme-noteworthy" target="_blank" rel="noopener">{{ i18n "noteworthy_theme" }}</a></p>
-    <p><a href="https://gohugo.io" target="_blank" rel="noopener">{{ i18n "built_with_hugo" }}</a></p>
+	<div>Si te gusta mi contenido, puedes colaborar para que se siga produciendo: </div>
+	<br>
+    {{ partial "social.html" . }}
+    <br>
+    <br>
+    <br>
+	{{ if .Site.Params.enableKofi }}
 
-	{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
-	<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="historiador" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+        <script type='text/javascript'>
+            const kofiId = '{{ .Site.Params.Kofi }}';
+            bmc-button.init('Apoya la web comprandome un café', '#29abe0', kofiId);
+            bmc-button.draw();
+        </script> 
+
+    {{ end }}
+	<br>
+	
+
+    <!--<p><a href="https://github.com/kimcc/hugo-theme-noteworthy" target="_blank" rel="noopener">{{ i18n "noteworthy_theme" }}</a></p>
+    <p><a href="https://gohugo.io" target="_blank" rel="noopener">{{ i18n "built_with_hugo" }}</a></p> -->
+
+	<!--{{ $script := resources.Get "js/main.js" | minify | fingerprint -}}
+	<script src="{{ $script.Permalink }}" {{ printf "integrity=%q" $script.Data.Integrity | safeHTMLAttr }} crossorigin="anonymous"></script>-->
 </footer>
